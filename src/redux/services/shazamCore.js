@@ -30,9 +30,32 @@ export const shazamCoreApi = createApi({
         },
       }),
     }),
+    getSongRelated: builder.query({
+      query: ({ id }) => ({
+        url: '/songs/get-related-artist',
+        method: 'GET',
+        params: {
+          id,
+        },
+      }),
+    }),
+    getArtistDetails: builder.query({
+      query: (id) => ({
+        url: '/artists/get-top-songs',
+        method: 'GET',
+        params: {
+          id,
+        },
+      }),
+    }),
     // getSongDetails: builder.query({
     //   query: ({ songid, l }) => `/songs/v2/get-details?id=${songid}&l=${l}`,
     // }),
   }),
 });
-export const { useGetTopChartsQuery, useGetSongDetailsQuery } = shazamCoreApi;
+export const {
+  useGetTopChartsQuery,
+  useGetSongDetailsQuery,
+  useGetSongRelatedQuery,
+  useGetArtistDetailsQuery,
+} = shazamCoreApi;
